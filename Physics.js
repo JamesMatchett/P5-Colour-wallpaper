@@ -90,7 +90,7 @@ function SetParticle(Mass){
 }
 
 function mouseClicked(){
-  particles.push(new SetParticle(10));
+  particles.push(new SetParticle(100));
 }
 
 function windowResized(){
