@@ -68,7 +68,7 @@ for(var i = 0; i<particles.length; i++){
 }
 
 function AddParticles(){
-for(var i = 0; i <50; i++){
+for(var i = 0; i <10; i++){
   particles.push(new Particle());
 }
 }
@@ -78,17 +78,19 @@ function Particle() {
    this.y = 0+ random(-.02,.02);
    this.Xspeed = 0;
    this.Yspeed = 0;
-   this.mass = random(1,10);
+   this.mass = random(1,5);
 }
 
 function SetParticle(Mass){
   var mParticle = new Particle();
   mParticle.mass = Mass;
+  mParticle.x = mouseX;
+  mParticle.y = mouseY;
   return mParticle;
 }
 
 function mouseClicked(){
-  particles.push(new SetParticle(100));
+  particles.push(new SetParticle(10));
 }
 
 function windowResized(){
