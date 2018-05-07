@@ -21,21 +21,16 @@ for(var i = 0; i<particles.length; i++){
 
  //accelerate each particle towards each other at an amount proportional to their seperation
 
- for(var j =0;j <particles.length; j++){
-
+ for(var j =0;j<particles.length; j++){
    var neighbourParticle = particles[j];
-
    //add consideration for mass of a particle, merging partices?? could potentially be done
    //i.e. instead of calculating an rf for m1 + m2 against 3rd particle m3, combine masses
    //and treat as a single particle
-
      CurrentParticle.Xspeed += (neighbourParticle.mass/CurrentParticle.mass)*(neighbourParticle.x - CurrentParticle.x)/70000;
      CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(neighbourParticle.y - CurrentParticle.y)/70000;
      CurrentParticle.Xspeed - 2;
      CurrentParticle.Yspeed - 2;
  }
-
-
   //if particle is off the screen, half the velocity
   if(CurrentParticle.x > width || CurrentParticle.X < 0){
     CurrentParticle.Xspeed = CurrentParticle.Xspeed /2;
@@ -58,17 +53,13 @@ for(var i = 0; i<particles.length; i++){
 
 //    stroke(color(CurrentParticle.Xspeed * 100,CurrentParticle.Yspeed * 100,
       //(-CurrentParticle.Xspeed * 60)+ (-CurrentParticle.Yspeed*60)));
-
-
-     ellipse(CurrentParticle.x,CurrentParticle.y,7.5,
-       7.5)
-
-}
-
+     ellipse(CurrentParticle.x,CurrentParticle.y,CurrentParticle.mass,
+       CurrentParticle.mass)
+  }
 }
 
 function AddParticles(){
-for(var i = 0; i <10; i++){
+for(var i = 0; i <0; i++){
   particles.push(new Particle());
 }
 }
@@ -90,7 +81,7 @@ function SetParticle(Mass){
 }
 
 function mouseClicked(){
-  particles.push(new SetParticle(100));
+  particles.push(new SetParticle(random(10,150)));
 }
 
 function windowResized(){
