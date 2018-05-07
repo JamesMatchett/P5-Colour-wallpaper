@@ -20,8 +20,8 @@ for(var i = 0; i<particles.length; i++){
   //update (accelerate in direction of mouse)
   var CurrentParticle = particles[i];
   //update velocities
-  CurrentParticle.Xspeed += (mouseX - CurrentParticle.x)/(500*CurrentParticle.mass);
-  CurrentParticle.Yspeed += (mouseY - CurrentParticle.y)/(500*CurrentParticle.mass);
+//  CurrentParticle.Xspeed += (mouseX - CurrentParticle.x)/(500*CurrentParticle.mass);
+//  CurrentParticle.Yspeed += (mouseY - CurrentParticle.y)/(500*CurrentParticle.mass);
 
  //accelerate each particle towards each other at an amount proportional to their seperation
 
@@ -32,11 +32,12 @@ for(var i = 0; i<particles.length; i++){
    //and treat as a single particle
    if(CurrentParticle.x - neighbourParticle.x != 0){
      CurrentParticle.Xspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.x - CurrentParticle.x)
-   *Math.abs(neighbourParticle.x - CurrentParticle.x))/7000;
+   *Math.abs(neighbourParticle.x - CurrentParticle.x))/6800;
      CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.y - CurrentParticle.y)
-   *Math.abs(neighbourParticle.y - CurrentParticle.y))/7000;
+   *Math.abs(neighbourParticle.y - CurrentParticle.y))/6800;
 
 if(ShowLines){
+
    line(CurrentParticle.x,CurrentParticle.y,neighbourParticle.x,neighbourParticle.y);
 }
      CurrentParticle.Xspeed - 2;
@@ -92,6 +93,8 @@ function SetParticle(Mass){
   return mParticle;
 }
 
+
+
 function mouseClicked(){
   particles.push(new SetParticle(random(10,170)));
 }
@@ -107,5 +110,9 @@ function keyPressed(){
   }
   if(keyCode == 84){
     trails = !trails;
+  }
+  if(keyCode >=48 && keyCode <= 57){
+      particles.push(new SetParticle((keyCode-47) * 5));
+      console.log((""));
   }
 }
