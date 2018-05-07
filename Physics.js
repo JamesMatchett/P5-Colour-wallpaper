@@ -11,7 +11,7 @@ function setup(){
 function draw(){
 
 //get postiion of mouse on canvas
-
+background(230);
 for(var i = 0; i<particles.length; i++){
   //update (accelerate in direction of mouse)
   var CurrentParticle = particles[i];
@@ -38,8 +38,8 @@ for(var i = 0; i<particles.length; i++){
    fill(color(CurrentParticle.Xspeed * 100,CurrentParticle.Yspeed * 100,
      (-CurrentParticle.Xspeed * 60) + (-CurrentParticle.Yspeed*60)));
 
-    stroke(color(CurrentParticle.Xspeed * 100,CurrentParticle.Yspeed * 100,
-      (-CurrentParticle.Xspeed * 60)+ (-CurrentParticle.Yspeed*60)));
+//    stroke(color(CurrentParticle.Xspeed * 100,CurrentParticle.Yspeed * 100,
+      //(-CurrentParticle.Xspeed * 60)+ (-CurrentParticle.Yspeed*60)));
 
 
      ellipse(CurrentParticle.x,CurrentParticle.y,7.5,
@@ -50,7 +50,7 @@ for(var i = 0; i<particles.length; i++){
 }
 
 function AddParticles(){
-for(var i = 0; i <10; i++){
+for(var i = 0; i <250; i++){
   particles.push(new Particle());
 }
 }
