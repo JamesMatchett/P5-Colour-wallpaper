@@ -55,11 +55,18 @@ for(var i = 0; i <10; i++){
 }
 }
 
-
-
 function Particle() {
    this.x = 0;
    this.y = 0;
    this.Xspeed = 0;
    this.Yspeed = 0;
+}
+
+function mouseClicked(){
+  particles.push(new Particle());
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+  background(230);
 }
