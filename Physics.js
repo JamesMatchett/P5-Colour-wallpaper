@@ -26,10 +26,14 @@ for(var i = 0; i<particles.length; i++){
    //add consideration for mass of a particle, merging partices?? could potentially be done
    //i.e. instead of calculating an rf for m1 + m2 against 3rd particle m3, combine masses
    //and treat as a single particle
-     CurrentParticle.Xspeed += (neighbourParticle.mass/CurrentParticle.mass)*(neighbourParticle.x - CurrentParticle.x)/70000;
-     CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(neighbourParticle.y - CurrentParticle.y)/70000;
+   if(CurrentParticle.x - neighbourParticle.x != 0){
+     CurrentParticle.Xspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.x - CurrentParticle.x)
+   *Math.abs(neighbourParticle.x - CurrentParticle.x))/7000;
+     CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.y - CurrentParticle.y)
+   *Math.abs(neighbourParticle.y - CurrentParticle.y))/7000;
      CurrentParticle.Xspeed - 2;
      CurrentParticle.Yspeed - 2;
+   }
  }
   //if particle is off the screen, half the velocity
   if(CurrentParticle.x > width || CurrentParticle.X < 0){
@@ -81,7 +85,7 @@ function SetParticle(Mass){
 }
 
 function mouseClicked(){
-  particles.push(new SetParticle(random(10,150)));
+  particles.push(new SetParticle(random(10,170)));
 }
 
 function windowResized(){
