@@ -1,4 +1,6 @@
 var particles = [];
+var ShowLines = true;
+var trails = false;
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
@@ -11,7 +13,9 @@ function setup(){
 function draw(){
 
 //comment this out to toggle trails
+if(!trails){
 background(230);
+}
 for(var i = 0; i<particles.length; i++){
   //update (accelerate in direction of mouse)
   var CurrentParticle = particles[i];
@@ -31,6 +35,10 @@ for(var i = 0; i<particles.length; i++){
    *Math.abs(neighbourParticle.x - CurrentParticle.x))/7000;
      CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.y - CurrentParticle.y)
    *Math.abs(neighbourParticle.y - CurrentParticle.y))/7000;
+
+if(ShowLines){
+   line(CurrentParticle.x,CurrentParticle.y,neighbourParticle.x,neighbourParticle.y);
+}
      CurrentParticle.Xspeed - 2;
      CurrentParticle.Yspeed - 2;
    }
@@ -91,4 +99,13 @@ function mouseClicked(){
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
   background(230);
+}
+function keyPressed(){
+  console.log(keyCode);
+  if(keyCode == 76){
+  ShowLines = !ShowLines;
+  }
+  if(keyCode == 84){
+    trails = !trails;
+  }
 }
