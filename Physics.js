@@ -16,8 +16,8 @@ for(var i = 0; i<particles.length; i++){
   //update (accelerate in direction of mouse)
   var CurrentParticle = particles[i];
   //update velocities
-  CurrentParticle.Xspeed += (mouseX - CurrentParticle.x)/1450 + random(-.07,.07);
-  CurrentParticle.Yspeed += (mouseY - CurrentParticle.y)/1450 + random(-.07,.07);;
+  CurrentParticle.Xspeed += (mouseX - CurrentParticle.x)/1450 + random(-.02,.02);
+  CurrentParticle.Yspeed += (mouseY - CurrentParticle.y)/1450 + random(-.02,.02);;
 
   //if particle is off the screen, half the velocity
   if(CurrentParticle.x > width || CurrentParticle.X < 0){
@@ -50,7 +50,7 @@ for(var i = 0; i<particles.length; i++){
 }
 
 function AddParticles(){
-for(var i = 0; i <60; i++){
+for(var i = 0; i <10; i++){
   particles.push(new Particle());
 }
 }
