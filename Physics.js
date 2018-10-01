@@ -32,16 +32,16 @@ for(var i = 0; i<particles.length; i++){
    //and treat as a single particle
    if(CurrentParticle.x - neighbourParticle.x != 0){
      CurrentParticle.Xspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.x - CurrentParticle.x)
-   *Math.abs(neighbourParticle.x - CurrentParticle.x))/6800;
+   *Math.abs(neighbourParticle.x - CurrentParticle.x))/6700;
      CurrentParticle.Yspeed += (neighbourParticle.mass/CurrentParticle.mass)*(1/(neighbourParticle.y - CurrentParticle.y)
-   *Math.abs(neighbourParticle.y - CurrentParticle.y))/6800;
+   *Math.abs(neighbourParticle.y - CurrentParticle.y))/6700;
 
 if(ShowLines){
 
    line(CurrentParticle.x,CurrentParticle.y,neighbourParticle.x,neighbourParticle.y);
 }
-     CurrentParticle.Xspeed - 2;
-     CurrentParticle.Yspeed - 2;
+     CurrentParticle.Xspeed - 1;
+     CurrentParticle.Yspeed - 1;
    }
  }
   //if particle is off the screen, half the velocity
@@ -71,18 +71,14 @@ if(ShowLines){
   }
 }
 
-function AddParticles(){
-for(var i = 0; i <0; i++){
-  particles.push(new Particle());
-}
-}
+
 
 function Particle() {
-   this.x = 0+ random(-.02,.02);
-   this.y = 0+ random(-.02,.02);
+   this.x = 0+ random(-.5,.5);
+   this.y = 0+ random(-.5,.5);
    this.Xspeed = 0;
    this.Yspeed = 0;
-   this.mass = random(1,5);
+   this.mass = random(1,10);
 }
 
 function SetParticle(Mass){
@@ -96,7 +92,7 @@ function SetParticle(Mass){
 
 
 function mouseClicked(){
-  particles.push(new SetParticle(random(10,170)));
+  particles.push(new SetParticle(random(10,100)));
 }
 
 function windowResized(){
